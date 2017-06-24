@@ -42,5 +42,48 @@ student.find({ schno:scno},function(err,data){
     }); 
 });
 
+router.get('/delete',function(req,res){
+
+var scno=req.query.scno;
+console.log(" id "+scno);
+var query= {schno:scno};
+student.remove(query,function(err,result){
+    if (err) {
+         console.log("Error in deleting " + JSON.stringify(err));
+         return res.json({ success: false, message: 'Deletion failed'});
+    }else{
+        console.log("Deletion Successful " + JSON.stringify(result));
+        res.json({ success: true, message: 'Successfully Deleted.' });
+      }
+    });
+});
+
+router.post('/edit',function(req,res){
+    var newStudent={
+     schno:req.body.schno,
+     f_Name:req.body.fname,
+     l_Name:req.body.lname,
+     clss:req.body.clss,
+     section:req.body.sec,
+     Roll_no:req.body.roll
+    };
+
+    var scno=req.query.scno;
+    console.log(" id "+scno);
+    var query= {schno:scno};
+
+    student.update(query, {$set:newStudent},{new:false},function(err,result) {
+      if (err) {
+         console.log("Error in Editing " + JSON.stringify(err));
+        return res.json({ success: false, message: 'Something went wrong.'});
+      }
+      else
+      {  
+          console.log("Edit Successful " + JSON.stringify(result));
+          res.json({ success: true, message: 'Successfully Edited.' });
+      }
+    });
+});
+
 
 module.exports = router;
