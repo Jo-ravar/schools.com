@@ -1,0 +1,19 @@
+{
+  "name": "schools.com",
+  "version": "1.0.0",
+  "description": "school project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jo-ravar/schools.com.git"
+  },
+  "author": "ravi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jo-ravar/schools.com/issues"
+  },
+  "homepage": "https://github.com/Jo-ravar/schools.com#readme"
+}
